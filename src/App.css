@@ -1,38 +1,97 @@
+Body {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  flex: 30%;
+  background-color:cadetblue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.header input {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 15px;
+  font-size: 17px;
+  border:1px solid blue;
+  outline: none;
+  margin-bottom: 15px;
+}
+
+.header button {
+  width: 80px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10%;
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+  background-color: green;
+}
+
+.todoList {
+  flex: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  flex-direction: column;
+}
+
+.task {
+  width: 700px;
+  height: 50px;
+  display: flex;
+  color: black;
+  margin-bottom: 7px;
+}
+
+.task .content {
+  width: 80%;
+  height: 100%;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  border-radius: 50%;
 }
 
-.App-link {
-  color: #61dafb;
+.task .content span {
+  width: 80%;
+  padding: 15px;
+  margin-right: 10px;
+  font-size:18px;
+  background-color: cadetblue;
+  text-align: center;
+  border-radius: 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.task button {
+  width: 50px;
+  height: 100%;
+  background-color: rgb(247, 78, 36);
+  color: aliceblue;
+  cursor: pointer;
+  border:none;
+  border-radius: 40%;
 }
