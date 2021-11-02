@@ -76,8 +76,9 @@ Body {
   border-radius: 50%;
 }
 
-.task .content span {
+.content_item {
   width: 80%;
+  height: 20px;
   padding: 15px;
   margin-right: 10px;
   font-size:18px;
