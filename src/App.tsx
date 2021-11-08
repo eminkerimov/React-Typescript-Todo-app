@@ -6,7 +6,7 @@ import TodoTask from './components/TodoTask';
 const App: FC = () => {
 
   const [task, setTask] = useState<string>("");
-  const [deadline, setDeadline] = useState<number>(0);
+  const [deadline, setDeadline] = useState<number | "">();
   const [todoList, setTodoList] = useState<ITask[]>([]);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -22,8 +22,17 @@ const App: FC = () => {
       const newTask = { taskName: task, deadline: deadline };
       setTodoList([...todoList, newTask]);
       setTask("");
-      setDeadline(0);
+      setDeadline("");
     }
+    if (task === "") {
+      document.getElementsByName("task")[0].classList.add("red");
+      console.log(document.getElementsByName("task")[0]); 
+    }
+    // if (deadline === "") {
+    //   document.getElementsByName("deadline")[0].classList.add("red");
+    //   console.log(document.getElementsByName("deadline")[0]); 
+    // }
+
   };
 
   const completeTask = (taskNameToDelete:string): void => {
@@ -39,7 +48,7 @@ const App: FC = () => {
       <div className="header">
         <div className="container">
           <input type="text" placeholder="Task..." name="task" value={task} onChange={handleChange} />
-          <input type="number" placeholder="Deadline (in Days)..." name="deadLine" value={deadline} onChange={handleChange} />
+          <input type="number" placeholder="Deadline (in Days)..." name="deadline" value={deadline} onChange={handleChange} />
           <button onClick={addTask}>Add Task</button>
         </div>
       </div>

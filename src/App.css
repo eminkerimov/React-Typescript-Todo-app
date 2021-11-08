@@ -96,3 +96,7 @@ Body {
   border:none;
   border-radius: 40%;
 }
+
+input.red {
+  border: 2px solid red;
+}
