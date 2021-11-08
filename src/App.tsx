@@ -1,41 +1,24 @@
-import React, { FC, ChangeEvent, useState } from 'react';
+import React, { FC, useState } from 'react';
 import './App.css';
-import { ITask } from "./interfaces";
+import { IEventType, ITask } from "./interfaces";
 import TodoTask from './components/TodoTask';
 
 const App: FC = () => {
 
   const [task, setTask] = useState<string>("");
-  const [deadline, setDeadline] = useState<number | "">();
+  const [deadline, setDeadline] = useState<number>(0);
   const [todoList, setTodoList] = useState<ITask[]>([]);
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.name === "task") {
-      setTask(event.target.value)
-    } else {
-      setDeadline(Number(event.target.value));
-    }
-  };
 
   const addTask = (): void => {
     if (task && deadline) {
       const newTask = { taskName: task, deadline: deadline };
       setTodoList([...todoList, newTask]);
       setTask("");
-      setDeadline("");
+      setDeadline(0);
     }
-    if (task === "") {
-      document.getElementsByName("task")[0].classList.add("red");
-      console.log(document.getElementsByName("task")[0]); 
-    }
-    // if (deadline === "") {
-    //   document.getElementsByName("deadline")[0].classList.add("red");
-    //   console.log(document.getElementsByName("deadline")[0]); 
-    // }
-
   };
 
-  const completeTask = (taskNameToDelete:string): void => {
+  const completeTask = (taskNameToDelete: string): void => {
     setTodoList(todoList.filter((task) => {
       return task.taskName !== taskNameToDelete
     }))
@@ -47,8 +30,21 @@ const App: FC = () => {
     <div className="App">
       <div className="header">
         <div className="container">
-          <input type="text" placeholder="Task..." name="task" value={task} onChange={handleChange} />
-          <input type="number" placeholder="Deadline (in Days)..." name="deadline" value={deadline} onChange={handleChange} />
+          <input
+            type="text"
+            placeholder="Task..."
+            className={`${!task ? 'red' : ''}`}
+            name="task" value={task}
+            onChange={(e: IEventType) => setTask(e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Deadline (in Days)..."
+            className={`${!deadline ? 'red' : ''}`}
+            name="deadline" value={deadline}
+            onChange={(e: any) => setDeadline(e.target.value)
+            }
+          />
           <button onClick={addTask}>Add Task</button>
         </div>
       </div>

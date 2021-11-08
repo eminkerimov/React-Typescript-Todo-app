@@ -34,7 +34,7 @@ Body {
   border-radius: 10px;
   padding: 6px 15px;
   font-size: 17px;
-  border:1px solid blue;
+  border:3px solid green;
   outline: none;
   margin-bottom: 15px;
 }
@@ -42,7 +42,6 @@ Body {
 .header button {
   width: 80px;
   height: 40px;
-  border: 1px solid black;
   border-radius: 10%;
   padding: 10px;
   cursor: pointer;
